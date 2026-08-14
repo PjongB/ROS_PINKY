@@ -4,6 +4,11 @@ ROS 2 Jazzy와 Gazebo를 이용해 Pinky 로봇이 창고의 B, C, D, E 지점�
 자율 순찰하고 A로 복귀한 뒤, LiDAR 기반 제어로 박스에 정밀 도킹하는
 개인 원데이 프로젝트입니다.
 
+## 프로젝트 링크
+
+- [GitHub 저장소](https://github.com/PjongB/ROS_PINKY)
+- [Notion 프로젝트 문서](https://app.notion.com/p/3bce8d3fa9438036af15e9a859080ffc)
+
 최종 동작은 A 도킹 완료 자세에서 시작하며 다음 순서로 자동 실행됩니다.
 
 ```text
