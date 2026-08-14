@@ -1,0 +1,51 @@
+patrol_manager:
+  ros__parameters:
+    use_sim_time: true
+    auto_start: true
+    auto_patrol: true
+    # Gazebo and AMCL already start at the completed A docking pose.
+    start_docked: true
+    # Exit pj_project after the final docking completes.
+    shutdown_on_complete: true
+    startup_delay: 2.0
+    departure_delay: 2.0
+    goal_timeout: 120.0
+    max_retries: 2
+
+    # [x (m), y (m), yaw (deg)] - replace after measuring the map.
+    # 박스 중심 (1.70, 0.00)에 맞춘 도킹 진입점
+    point_a: [1.40, 0.03, 180.0]
+    point_b: [-1.62, 1.05, 0.0]
+    point_c: [1.40, 1.05, 0.0]
+    point_d: [-1.62, -0.02, 0.0]
+    point_e: [1.40, -1.10, 0.0]
+
+docking_controller:
+  ros__parameters:
+    use_sim_time: true
+    control_rate: 10.0
+    target_distance: 0.06 # 허용 라이다 기준 물체와의 거리
+    distance_tolerance: 0.005
+    # 직선 피팅 필터 각도가 약 ±5도 이내면 평행으로 판정
+    angle_tolerance: 0.087
+    # 후방 여러 점으로 박스 면의 직선을 피팅해 각도 계산
+    alignment_fit_window_deg: 25.0
+    alignment_range_tolerance: 0.05
+    alignment_min_points: 10
+    angle_filter_window: 5
+    # 10cm에서 멈춰 평행 정렬한 뒤 최종 직선 후진
+    alignment_distance: 0.10
+    required_alignment_cycles: 5
+    alignment_min_duration: 2.0
+
+    linear_kp: 0.4
+    linear_ki: 0.0
+    linear_kd: 0.05
+    # 각도 PID 다음 시험: P 게인과 최대 각속도를 낮춰 진동 억제
+    angular_kp: 0.2
+    angular_ki: 0.0
+    angular_kd: 0.0
+
+    max_linear_speed: 0.08
+    max_angular_speed: 0.05
+    docking_timeout: 45.0
