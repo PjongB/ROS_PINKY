@@ -1,0 +1,17 @@
+# ROS 2 / colcon generated directories
+build/
+install/
+log/
+
+# Python generated files
+__pycache__/
+*.py[cod]
+.pytest_cache/
+
+# Editor and OS metadata
+.vscode/
+.idea/
+.DS_Store
+
+# Separate deployment repository; not part of the ROS workspace source
+site-deploy/
